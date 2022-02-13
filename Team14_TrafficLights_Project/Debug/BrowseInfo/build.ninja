@@ -1,0 +1,51 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = D$:\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++D$:\common\bin\XclFileGenerator.exe $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = D$:\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++D$:\common\bin\SourceIndexer.exe $flags
+
+rule MAKEBROWSE
+  command = D$:\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++D$:\common\bin\makeBrowseData.exe $flags
+
+rule PDBLINK
+  command = D$:\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++D$:\common\bin\PbdLink.exe $flags
+
+
+
+#Build steps
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\main.c" -xcl_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.xcl" -macro_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.tmp" -icc_path D$:\arm\bin\iccarm.exe
+  flags = "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\main.c" -D ewarm -D PART_TM4C123GH6PM -D TARGET_IS_TM4C123_RB1 -o "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config D$:\arm\inc\c\DLib_Config_Normal.h -I C$:\ti\TivaWare_C_Series-2.2.0.295\ -Ol --predef_macros "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.tmp"
+  rspfile_name = D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.xcl.rsp
+
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.xcl : COMPILER_XCL 
+  xclcommand = -source_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\tm4c123gh6pm_startup_ccs.c" -xcl_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.xcl" -macro_file "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.tmp" -icc_path D$:\arm\bin\iccarm.exe
+  flags = "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\tm4c123gh6pm_startup_ccs.c" -D ewarm -D PART_TM4C123GH6PM -D TARGET_IS_TM4C123_RB1 -o "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config D$:\arm\inc\c\DLib_Config_Normal.h -I C$:\ti\TivaWare_C_Series-2.2.0.295\ -Ol --predef_macros "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.tmp"
+  rspfile_name = D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.xcl.rsp
+
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.pbi : INDEXER D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.xcl |  $
+D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\main.c
+  flags = "-out=D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.pbi" -f "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.xcl"
+
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.pbi : INDEXER D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.xcl |  $
+D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\tm4c123gh6pm_startup_ccs.c
+  flags = "-out=D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.pbi" -f "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.xcl"
+
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbw : MAKEBROWSE D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbd
+  flags = "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbd" -output "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbw"
+
+build D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbd : PDBLINK D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.pbi |  $
+D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.pbi
+  flags = -M "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\TivaWare_Labs.pbd" "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\main.pbi" "D$:\Senior$ 1$ -$ semester$ 1\CSE211$ -$ Introduction$ to$ Embedded$ Systems\TivaWare_Labs\Debug\BrowseInfo\tm4c123gh6pm_startup_ccs.pbi"
+

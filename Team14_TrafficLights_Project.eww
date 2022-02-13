@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>E:\Embeded_Labs\Ass3.ewp</path>
+    </project>
+    <project>
+        <path>E:\Embeded_Labs\Lab3A\lab3a.ewp</path>
+    </project>
+    <project>
+        <path>E:\Embeded_Labs\Lab3B\lab3b.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\RigesterLevel_Labs\RigesterLevel_Labs.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\TivaWare_Labs\TivaWare_Labs.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
